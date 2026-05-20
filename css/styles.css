@@ -207,7 +207,9 @@ button:focus-visible {
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: transform 0.2s, opacity 0.2s;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
 }
 
 .nav-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -286,10 +288,20 @@ main {
 }
 
 .hero__lead {
-  max-width: 52ch;
   margin: 0 0 var(--space-lg);
   color: var(--color-text-muted);
   font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 900px) {
+  .hero__lead {
+    white-space: nowrap;
+  }
+}
+
+.hero__grad-year {
+  white-space: nowrap;
 }
 
 .hero__actions {
@@ -335,7 +347,11 @@ main {
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
 }
 
 .btn:hover {
@@ -661,7 +677,10 @@ main {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    transition:
+      opacity 0.2s,
+      transform 0.2s,
+      visibility 0.2s;
   }
 
   .site-nav.is-open {
