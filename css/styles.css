@@ -474,6 +474,13 @@ main {
   );
 }
 
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 .project-card__badge {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -481,6 +488,23 @@ main {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-secondary);
+}
+
+.project-card__role {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  padding: 4px 10px;
+  background: rgba(24, 86, 255, 0.1);
+  border-radius: var(--radius-sm);
+}
+
+.timeline-card__role {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-primary);
 }
 
 .project-card h3 {
