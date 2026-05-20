@@ -495,6 +495,14 @@ main {
   color: var(--color-text-muted);
 }
 
+.project-card code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 2px 6px;
+  background: rgba(58, 52, 78, 0.08);
+  border-radius: var(--radius-sm);
+}
+
 .project-card__tags {
   display: flex;
   flex-wrap: wrap;
