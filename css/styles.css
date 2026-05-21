@@ -519,6 +519,47 @@ main {
   color: var(--color-primary);
 }
 
+.timeline-card__leadership {
+  margin-bottom: var(--space-md);
+}
+
+.timeline-card__leadership-title {
+  margin: 0 0 var(--space-md);
+  color: var(--color-primary);
+}
+
+.timeline-card__duty-heading {
+  margin: var(--space-md) 0 var(--space-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.timeline-card__duty-heading:first-of-type {
+  margin-top: 0;
+}
+
+.timeline-card__duty-en {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.timeline-card__duties {
+  margin: 0 0 var(--space-sm);
+  padding-left: 1.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.timeline-card__duties li + li {
+  margin-top: var(--space-sm);
+}
+
 .project-card h3 {
   margin: 0;
   font-size: 1.25rem;
