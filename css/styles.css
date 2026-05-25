@@ -294,12 +294,6 @@ main {
   line-height: 1.5;
 }
 
-@media (min-width: 900px) {
-  .hero__lead {
-    white-space: nowrap;
-  }
-}
-
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
