@@ -1,4 +1,23 @@
-/* Design tokens — Glassmorphism */
+/*
+ * styles.css — Portfolio Huỳnh Nguyên Bảo
+ *
+ * MỤC LỤC (Ctrl+F tên section):
+ * :root              → màu, font, khoảng cách (đổi theme tại đây)
+ * .bg-blob           → vòng mờ nền
+ * .glass            → hiệu ứng kính mờ (dùng chung nhiều thẻ)
+ * .site-header      → menu cố định trên cùng
+ * .landing          → section #landing + khung R4X Bot + ảnh + stat-card
+ * .btn              → nút primary / ghost
+ * .about-*          → section #about
+ * .timeline-card    → section #experience
+ * .project-card     → section #projects
+ * .contact-*        → section #contact
+ * .site-footer      → chân trang
+ * @media mobile     → responsive
+ * Animations        → .reveal, .stagger (kết hợp main.js)
+ */
+
+/* :root — biến thiết kế toàn site (Glassmorphism) */
 :root {
   --color-primary: #1856ff;
   --color-secondary: #3a344e;
@@ -80,7 +99,7 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* Background blobs */
+/* .bg-blob — vòng màu blur cố định phía sau nội dung (index: .bg-blob--1/2/3) */
 .bg-blob {
   position: fixed;
   border-radius: 50%;
@@ -113,7 +132,7 @@ button:focus-visible {
   background: rgba(7, 202, 107, 0.12);
 }
 
-/* Glass panel */
+/* .glass — panel kính mờ: thêm class "glass" vào thẻ HTML cần hiệu ứng */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
@@ -132,7 +151,7 @@ button:focus-visible {
   color: var(--color-primary);
 }
 
-/* Header */
+/* .site-header — thanh menu cố định; .is-scrolled do main.js khi cuộn */
 .site-header {
   position: fixed;
   top: var(--space-md);
@@ -232,12 +251,12 @@ button:focus-visible {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Layout */
+/* Layout — .section chung: max-width, padding cho mọi section (about, experience, ...) */
 main {
   padding-top: 0;
 }
 
-/* Landing — split layout + Spline viewport */
+/* #landing — màn chào: chữ trái + khung R4X Bot (ảnh profile) + stat */
 .landing {
   --landing-stage-size: clamp(280px, 42vw, 480px);
   position: relative;
@@ -278,11 +297,17 @@ main {
   background: rgba(7, 202, 107, 0.14);
 }
 
-.landing__shell {
+.landing__wrap {
   position: relative;
   z-index: 1;
   width: min(calc(100% - 8px), var(--max-width));
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.landing__shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--landing-stage-size);
   gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
@@ -350,10 +375,10 @@ main {
 
 .landing__lead {
   margin: 0;
-  max-width: 32ch;
+  max-width: 42ch;
   color: var(--color-text-muted);
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 2.2vw, 1.0625rem);
+  line-height: 1.55;
 }
 
 .landing__stack {
@@ -451,13 +476,14 @@ main {
   background: linear-gradient(160deg, #f0f4ff 0%, #fafbfd 55%, #eef2ff 100%);
 }
 
-.landing__canvas iframe {
+.landing__canvas .landing__avatar {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  border: 0;
   display: block;
+  object-fit: cover;
+  object-position: center 18%;
 }
 
 .landing__stage-note {
@@ -506,6 +532,12 @@ main {
   transform: rotate(45deg) translateY(-2px);
 }
 
+.landing__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
 @media (min-width: 900px) {
   .landing__shell {
     grid-template-columns: minmax(0, 1.05fr) var(--landing-stage-size);
@@ -538,12 +570,12 @@ main {
     max-width: 40ch;
   }
 
-  .landing__stack {
+  .landing__actions {
     justify-content: center;
   }
 
-  .landing__actions {
-    justify-content: center;
+  .landing__stats {
+    grid-template-columns: 1fr;
   }
 
   .landing__stage {
@@ -589,7 +621,7 @@ main {
   line-height: 1.15;
 }
 
-/* Hero */
+/* #hero — portfolio chính: avatar, mô tả FPT, 3 ô .stat-card */
 .hero {
   width: min(calc(100% - 32px), var(--max-width));
   margin: 0 auto var(--space-2xl);
@@ -669,7 +701,7 @@ main {
   color: var(--color-text-muted);
 }
 
-/* Buttons */
+/* .btn — nút: .btn--primary (xanh), .btn--ghost (viền), .btn--sm (nhỏ trong thẻ dự án) */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -726,7 +758,7 @@ main {
   width: 100%;
 }
 
-/* About */
+/* #about — lưới .about-card / .tag-list kỹ năng */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -769,7 +801,7 @@ main {
   border-radius: var(--radius-sm);
 }
 
-/* Experience */
+/* #experience — thẻ .timeline-card thực tập G1Mart */
 .timeline-card {
   padding: var(--space-xl);
 }
@@ -839,7 +871,7 @@ main {
   padding-top: var(--space-sm);
 }
 
-/* Projects — bento */
+/* #projects — lưới .bento chứa các .project-card + .demo-credentials */
 .bento {
   display: grid;
   grid-template-columns: 1fr;
@@ -1044,7 +1076,7 @@ main {
   color: var(--color-text);
 }
 
-/* Contact */
+/* #contact — khối liên hệ: .contact-wrap, .contact-list */
 .section--contact {
   margin-bottom: var(--space-xl);
 }
@@ -1125,7 +1157,7 @@ main {
   text-decoration: none;
 }
 
-/* Footer */
+/* .site-footer — dòng copyright cuối trang */
 .site-footer {
   text-align: center;
   padding: var(--space-lg);
@@ -1137,7 +1169,7 @@ main {
   margin: 0;
 }
 
-/* Mobile */
+/* Mobile — giao diện ≤768px: menu hamburger, landing/hero xếp dọc */
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
@@ -1199,7 +1231,7 @@ main {
   }
 }
 
-/* ——— Animations ——— */
+/* Animations — .reveal / .stagger: main.js thêm .is-visible khi scroll tới */
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -1343,6 +1375,7 @@ main {
   }
 }
 
+/* .scroll-progress — thanh xanh trên cùng; width % do main.js khi cuộn */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -1399,23 +1432,14 @@ main {
     border-color: rgba(255, 255, 255, 0.92);
   }
 
-  .landing__badge {
-    animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  }
-
-  .landing__badge-dot {
-    animation: badge-pulse 2.4s ease-in-out infinite;
-  }
-
-  .landing__title-eyebrow,
+  .landing__copy .label-caps,
   .landing__title-name,
   .landing__lead,
-  .landing__stack,
   .landing__actions {
     animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
 
-  .landing__title-eyebrow {
+  .landing__copy .label-caps {
     animation-delay: 0.06s;
   }
 
@@ -1440,12 +1464,8 @@ main {
     animation-delay: 0.2s;
   }
 
-  .landing__stack {
-    animation-delay: 0.28s;
-  }
-
   .landing__actions {
-    animation-delay: 0.36s;
+    animation-delay: 0.28s;
   }
 
   .landing__frame {
@@ -1459,6 +1479,22 @@ main {
 
   .landing__stage-note {
     animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s backwards;
+  }
+
+  .landing__stats .stat-card {
+    animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .landing__stats .stat-card:nth-child(1) {
+    animation-delay: 0.42s;
+  }
+
+  .landing__stats .stat-card:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .landing__stats .stat-card:nth-child(3) {
+    animation-delay: 0.58s;
   }
 
   .landing__scroll {
