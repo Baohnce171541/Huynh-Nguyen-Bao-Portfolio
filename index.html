@@ -1,23 +1,6 @@
 <!doctype html>
-<!--
-  PORTFOLIO — Huỳnh Nguyên Bảo
-  Cấu trúc trang (cuộn từ trên xuống):
-  1. head          → SEO, favicon, font, file CSS
-  2. decor         → thanh tiến độ + blob nền
-  3. site-header   → logo HNB + menu (anchor #about, #experience, #projects, #contact)
-  4. #landing      → giới thiệu chính + ảnh trong khung R4X Bot + 3 thẻ stat
-  5. #about        → kỹ năng, ngoại ngữ, định hướng
-  6. #experience   → thực tập FPT / G1Mart
-  7. #projects     → 3 thẻ dự án (G1Mart, AccountMarket, FUS)
-  8. #contact      → email, SĐT, nút gửi mail
-  9. site-footer   → copyright (năm do js/main.js gán)
-  Chỉnh nội dung: sửa text trong từng <section id="...">.
-  Chỉnh giao diện: css/styles.css (tìm comment trùng tên section).
-  Chỉnh hành vi: js/main.js (menu, scroll, animation).
--->
 <html lang="vi">
   <head>
-    <!-- META & TÀI NGUYÊN: title/description hiện trên tab & Google; đổi link font nếu đổi typography -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -29,7 +12,6 @@
     <link rel="apple-touch-icon" href="assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://my.spline.design" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -37,7 +19,6 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <!-- DECOR NỀN: không cần sửa trừ khi tắt hiệu ứng — style trong .scroll-progress, .bg-blob (CSS) -->
     <div class="scroll-progress" aria-hidden="true">
       <span class="scroll-progress__bar"></span>
     </div>
@@ -45,7 +26,6 @@
     <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
     <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
 
-    <!-- HEADER CỐ ĐỊNH: logo → #landing; menu mobile: nút .nav-toggle + #site-nav (logic trong main.js) -->
     <header class="site-header glass">
       <a class="logo" href="#landing" aria-label="Portfolio — về đầu trang">
         <span class="logo__text">My Portfolio</span>
@@ -68,35 +48,63 @@
     </header>
 
     <main>
-      <!-- SECTION 1 — LANDING: giới thiệu + ảnh trong khung R4X Bot (assets/profile.png) + stat -->
       <section id="landing" class="landing" aria-label="Trang chào mừng">
         <div class="landing__orb landing__orb--1" aria-hidden="true"></div>
         <div class="landing__orb landing__orb--2" aria-hidden="true"></div>
 
         <div class="landing__wrap">
           <div class="landing__shell">
-            <!-- Cột trái: nhãn, tên, mô tả FPT, nút -->
             <div class="landing__copy">
-              <p class="label-caps">Kỹ thuật phần mềm · Cần Thơ</p>
+              <div class="landing__badge glass">
+                <span class="landing__badge-dot" aria-hidden="true"></span>
+                <span class="landing__badge-text"
+                  >Backend / Full-stack · Cần Thơ</span
+                >
+              </div>
 
               <h1 class="landing__title">
+                <span class="landing__title-eyebrow">Xin chào, tôi là</span>
                 <span class="landing__title-name">Huỳnh Nguyên Bảo</span>
               </h1>
 
               <p class="landing__lead">
-                <strong>FPT University</strong> — chuyên ngành
-                <strong>Kỹ thuật phần mềm</strong> (<strong>2021–2025</strong>)
-                — đào tạo chuyên sâu kỹ năng backend và full-stack với ASP.NET
-                Core, Spring Boot và kiến trúc nhiều lớp.
+                Học <strong>Kỹ thuật phần mềm</strong> tại
+                <strong>FPT University</strong> (<strong>2021–2025</strong>).
+                Tập trung <strong>backend / full-stack</strong> với
+                <strong>ASP.NET Core</strong>, <strong>Spring Boot</strong> và
+                kiến trúc nhiều lớp.
               </p>
 
+              <ul class="landing__stack" aria-label="Công nghệ chính">
+                <li>+3 Project</li>
+                <li>ASP.NET Core</li>
+                <li>Spring Boot</li>
+              </ul>
+
               <div class="landing__actions">
-                <a class="btn btn--primary" href="#projects">Xem dự án</a>
+                <a class="btn btn--primary landing__cta" href="#about">
+                  Khám phá portfolio
+                  <svg
+                    class="landing__cta-icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
                 <a class="btn btn--ghost" href="#contact">Liên hệ</a>
               </div>
             </div>
 
-            <!-- Cột phải: khung R4X Bot — ảnh chân dung nằm trong .landing__canvas -->
             <div class="landing__stage">
               <div class="landing__frame glass">
                 <div class="landing__frame-bar">
@@ -118,22 +126,6 @@
               </div>
             </div>
           </div>
-
-          <!-- 3 ô thống kê — sửa .stat-card__value / __label -->
-          <div class="landing__stats">
-            <article class="stat-card glass">
-              <span class="stat-card__value">3+</span>
-              <span class="stat-card__label">Dự án nổi bật</span>
-            </article>
-            <article class="stat-card glass">
-              <span class="stat-card__value">.NET</span>
-              <span class="stat-card__label">ASP.NET Core</span>
-            </article>
-            <article class="stat-card glass">
-              <span class="stat-card__value">Java</span>
-              <span class="stat-card__label">Spring Boot</span>
-            </article>
-          </div>
         </div>
 
         <a
@@ -146,7 +138,6 @@
         </a>
       </section>
 
-      <!-- SECTION 2 — GIỚI THIỆU: lưới .about-card — thêm/bớt <article> hoặc <li> trong .tag-list -->
       <section id="about" class="section">
         <div class="section__header">
           <p class="label-caps">Giới thiệu</p>
@@ -203,7 +194,6 @@
         </div>
       </section>
 
-      <!-- SECTION 4 — KINH NGHIỆM: một .timeline-card; thêm mục <h4> + <ul> trong .timeline-card__leadership nếu cần -->
       <section id="experience" class="section">
         <div class="section__header">
           <p class="label-caps">Kinh nghiệm</p>
@@ -308,7 +298,6 @@
         </article>
       </section>
 
-      <!-- SECTION 5 — DỰ ÁN: mỗi <article class="project-card"> = 1 dự án; nhân bản block để thêm dự án mới -->
       <section id="projects" class="section">
         <div class="section__header">
           <p class="label-caps">Dự án</p>
@@ -518,7 +507,6 @@
         </div>
       </section>
 
-      <!-- SECTION 6 — LIÊN HỆ: đổi mailto:/tel: và text email, SĐT -->
       <section id="contact" class="section section--contact">
         <div class="contact-wrap glass">
           <div class="section__header section__header--inline">
@@ -549,12 +537,10 @@
       </section>
     </main>
 
-    <!-- FOOTER: #year được gán năm hiện tại bởi js/main.js -->
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Huỳnh Nguyên Bảo. Portfolio cá nhân.</p>
     </footer>
 
-    <!-- JS: menu mobile, scroll mượt, thanh progress, animation khi scroll, highlight menu -->
     <script src="js/main.js"></script>
   </body>
 </html>
